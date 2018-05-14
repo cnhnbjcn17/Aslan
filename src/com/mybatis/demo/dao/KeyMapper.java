@@ -9,7 +9,6 @@ public interface KeyMapper {
 	public Lock getLockByKeyId(int i);
 	public Key getKeyByKeyId(int i);
 	//public Lock getLockByLockId(int i);
-	public List<Lock> getAll();
-	
+	public List<Lock> getAll();	
 	public void getLockByLockId();
 }
