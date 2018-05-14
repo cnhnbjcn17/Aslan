@@ -44,6 +44,7 @@ public class StudentTest {
 		//student.setName("kitty");
 		//student.setId(2);
 		//studentDao.getStudentById(id)
+		//this is a new coment
 		System.out.println(studentDao.getStudentWhere(student));
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("ids", Arrays.asList(2,3,4));
