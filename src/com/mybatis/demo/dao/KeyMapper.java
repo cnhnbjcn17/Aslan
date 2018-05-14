@@ -11,4 +11,5 @@ public interface KeyMapper {
 	//public Lock getLockByLockId(int i);
 	public List<Lock> getAll();	
 	public void getLockByLockId();
+	public void a();
 }
