@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.mybatis.demo.dao.KeyMapper">
+
+	<resultMap type="Key" id="KeyMap">
+		<id property="id" column="kid"/>
+		<result property="keyName" column="keyName"/>
+		
+	</resultMap>
+	<resultMap type="Lock" id="lockMap">
+		<id property="id" column="id"/>
+		<result property="lockName" column="lockName"/>
+		<association property="key" column="key_id" select="com.mybatis.demo.dao.LockMapper.getLockById"></association>
+	</resultMap>
+	
+	 <select id="getLockByKeyId" parameterType="int" resultMap="lockMap">
+		select * from tbl_key where id=#{id}
+	</select>
+	<select id="getKeyByKeyId" parameterType="int" resultMap="KeyMap">
+		select * from tbl_key where kid=#{id}
+	</select>
+	
+	<!-- <select id="getLockByLockId" parameterType="int" resultType="Lock">
+		select * from tbl_lock where id=#{id}
+	</select>  -->
+
+</mapper>
+	
+	

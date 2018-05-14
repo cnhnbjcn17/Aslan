@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.mybatis.demo.dao.LockMapper">
+
+	<!--  
+	<cache  eviction="FIFO"  flushInterval="60000"  size="512"  readOnly="true"/>-->
+	
+
+	<!-- mybatis和ehcache结合-->
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache"></cache>
+	
+	<resultMap type="Lock" id="lockMap">
+			<id property="id" column="id"/>
+			<result property="lockName" column="lockName"/>
+			<association property="key" column="key_id" select="com.mybatis.demo.dao.KeyMapper.getKeyByKeyId"></association>
+			
+	</resultMap>
+	<select id="getLockById" parameterType="Integer" resultMap="lockMap">
+		select * from tbl_lock where id=#{id}
+	</select>
+
+	<!-- <select id="getLockByIdd">
+		<if test=""></if>
+		<bind name="" value=""/>
+		<choose ></choose>
+		<foreach collection=""></foreach>
+		<include refid=""></include>
+		<set></set>
+		<trim></trim>
+	</select> -->
+
+</mapper>
+	
+	
